@@ -23,7 +23,7 @@ public class TicTacToe
 
         var turn = new Turn();
         Sleep(1000);
-        turn.StartingPlayer(player, computer);
-        turn.PlayGame(player, computer);
+        var starter = GameStart.DecideStartingPlayer(player, computer);
+        turn.PlayGame(player, computer, starter);
     }
 }

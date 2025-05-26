@@ -2,34 +2,16 @@ namespace TicTacToe;
 
 public class Turn
 {
-    public void StartingPlayer(HumanPlayer player, Computer computer)
-    {
-        var randomNumber = new Random();
-        var decidingNumber = randomNumber.Next(1, 3);
-
-        switch (decidingNumber)
-        {
-            case 1:
-                Console.WriteLine($"{player.Name} starts!");
-                break;
-            case 2:
-                Console.WriteLine($"{computer.name} starts!");
-                break;
-        }
-    }
-
-    public void PlayGame(HumanPlayer player, Computer computer)
+    public void PlayGame(HumanPlayer player, Computer computer, Starter starter)
     {
         var board = new Board();
-        char currentSymbol = 'X';
-        bool isHumanTurn = true;
-
+        bool isHumanTurn = starter == Starter.Human;
+        char currentSymbol = isHumanTurn ? 'X' : 'O';
         while (true)
         {
             Console.Clear();
             board.Display();
             Console.WriteLine();
-
             if (isHumanTurn)
             {
                 player.TakeTurn(board, player.Name, currentSymbol);
@@ -38,7 +20,6 @@ public class Turn
             {
                 computer.TakeTurn(board, computer.name, currentSymbol);
             }
-
             var winner = board.CheckWinner();
             if (winner != null)
             {
