@@ -1,12 +1,16 @@
 namespace TicTacToe;
 
-public class Player : IPlayerType
+public class HumanPlayer : IPlayerType
 {
     public string? Name { get; set; }
 
-    // public Player(string? name)
+    // TODO - Uncomment and implement the ChosenValue property 
+    // protected ChosenValue chosenValue { get; set; }
+
+    // public Player(ChosenValue chosenValue)
     // {
-    //     _name = name;
+    //     
+    //     ChosenValue = chosenValue;
     // }
 
     public Turn TakeTurn()

@@ -2,7 +2,7 @@ namespace TicTacToe.Data;
 
 public class Names
 {
-    private readonly string[] _computerNames =
+    public readonly string[] _computerNames =
     {
         "Jeff",
         "David",
