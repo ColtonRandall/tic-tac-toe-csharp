@@ -2,7 +2,7 @@ namespace TicTacToe;
 
 public class Board
 {
-    private char[] state = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+    private readonly char[] state = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
     private const string BoardLine = "---+---+---";
 
     public void Display()

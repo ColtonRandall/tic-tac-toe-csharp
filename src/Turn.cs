@@ -22,7 +22,6 @@ public class Turn
     {
         var board = new Board();
         char currentSymbol = 'X';
-        // string currentPlayer = player.Name;
         bool isHumanTurn = true;
 
         while (true)
@@ -31,22 +30,13 @@ public class Turn
             board.Display();
             Console.WriteLine();
 
-            int move;
             if (isHumanTurn)
             {
-                Console.Write($"{player.Name}, enter your move (1-9): ");
-                while (!int.TryParse(Console.ReadLine(), out move) || !board.MakeMove(move, currentSymbol))
-                    Console.Write("Invalid move. Try again: ");
+                player.TakeTurn(board, player.Name, currentSymbol);
             }
             else
             {
-                Thread.Sleep(1000);
-                var available = board.GetState().Where(cell => cell != 'X' && cell != 'O').ToArray();
-                var rand = new Random();
-                move = int.Parse(available[rand.Next(available.Length)].ToString());
-                Console.WriteLine($"{computer.name} 🤖 chooses {move}");
-                board.MakeMove(move, currentSymbol);
-                Thread.Sleep(1000);
+                computer.TakeTurn(board, computer.name, currentSymbol);
             }
 
             var winner = board.CheckWinner();

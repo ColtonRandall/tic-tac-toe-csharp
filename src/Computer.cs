@@ -5,10 +5,9 @@ namespace TicTacToe;
 public class Computer : IPlayerType
 {
     Names computer = new Names();
+    public string name { get; set; } = "Computer"; // Default computer name
 
-    public string? name { get; set; }
-
-    public string? GetPlayerName()
+    public string GetPlayerName()
     {
         var randomNum = new Random().Next(0, 5);
         name = computer._computerNames[randomNum];
@@ -16,8 +15,14 @@ public class Computer : IPlayerType
         return name;
     }
 
-    public Turn TakeTurn()
+    public void TakeTurn(Board board, string computerName, char symbol)
     {
-        return null; // TODO implement
+        Thread.Sleep(1000);
+        var available = board.GetState().Where(cell => cell != 'X' && cell != 'O').ToArray();
+        var rand = new Random();
+        int move = int.Parse(available[rand.Next(available.Length)].ToString());
+        Console.WriteLine($"{computerName} 🤖 chooses {move}");
+        board.MakeMove(move, symbol);
+        Thread.Sleep(1000);
     }
 }

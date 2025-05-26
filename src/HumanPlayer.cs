@@ -2,26 +2,21 @@ namespace TicTacToe;
 
 public class HumanPlayer : IPlayerType
 {
-    public string? Name { get; set; }
+    public string Name { get; set; } = "Player"; // Default name
 
-    // TODO - Uncomment and implement the ChosenValue property 
-    // protected ChosenValue chosenValue { get; set; }
-
-    // public Player(ChosenValue chosenValue)
-    // {
-    //     
-    //     ChosenValue = chosenValue;
-    // }
-
-    public Turn TakeTurn()
+    public void TakeTurn(Board board, string playerName, char symbol)
     {
-        return null;
+        int move;
+        Console.Write($"{playerName}, enter your move (1-9): ");
+        while (!int.TryParse(Console.ReadLine(), out move) || !board.MakeMove(move, symbol))
+            Console.Write("Invalid move. Try again: ");
     }
 
-    public string? GetPlayerName()
+    public string GetPlayerName()
     {
         Console.WriteLine("What's your name?");
-        Name = Console.ReadLine();
+        var input = Console.ReadLine();
+        Name = input ?? "Player";
         Console.WriteLine($"Welcome {Name}\n");
         return Name;
     }
