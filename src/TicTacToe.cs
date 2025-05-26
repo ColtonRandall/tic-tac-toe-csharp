@@ -24,6 +24,6 @@ public class TicTacToe
         Sleep(1000);
         turn.StartingPlayer(player, computer);
         turn.ShowBoardOnly();
-        // turn.PlayGame(player, computer); // TODO Add later
+        turn.PlayGame(player, computer);
     }
 }
