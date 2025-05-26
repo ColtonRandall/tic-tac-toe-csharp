@@ -22,13 +22,12 @@ public class Turn
     {
         var board = new Board();
         char currentSymbol = 'X';
-        string currentPlayer = player.Name;
+        // string currentPlayer = player.Name;
         bool isHumanTurn = true;
 
         while (true)
         {
             Console.Clear();
-            Console.WriteLine($"Tic Tac Toe\n");
             board.Display();
             Console.WriteLine();
 
@@ -41,11 +40,13 @@ public class Turn
             }
             else
             {
+                Thread.Sleep(1000);
                 var available = board.GetState().Where(cell => cell != 'X' && cell != 'O').ToArray();
                 var rand = new Random();
                 move = int.Parse(available[rand.Next(available.Length)].ToString());
-                Console.WriteLine($"{computer.name} chooses {move}");
+                Console.WriteLine($"{computer.name} 🤖 chooses {move}");
                 board.MakeMove(move, currentSymbol);
+                Thread.Sleep(1000);
             }
 
             var winner = board.CheckWinner();
