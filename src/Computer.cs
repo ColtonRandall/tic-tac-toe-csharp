@@ -19,9 +19,12 @@ public class Computer : IPlayerType
     {
         Thread.Sleep(1000);
         var available = board.GetState().Where(cell => cell != 'X' && cell != 'O').ToArray();
+        
         var rand = new Random();
+
         int move = int.Parse(available[rand.Next(available.Length)].ToString());
-        Console.WriteLine($"{computerName} 🤖 chooses {move}");
+        
+        Console.WriteLine($"{computerName} 🤖 puts a '{symbol}' on {move}");
         board.MakeMove(move, symbol);
         Thread.Sleep(1000);
     }
