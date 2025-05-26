@@ -11,7 +11,7 @@ public class Computer : IPlayerType
     {
         var randomNum = new Random().Next(0, 5);
         name = computer._computerNames[randomNum];
-        Console.WriteLine($"Your opponent's name is {name} 🤖");
+        Console.WriteLine($"The computer's name is {name} 🤖");
         return name;
     }
 
@@ -23,7 +23,7 @@ public class Computer : IPlayerType
         var rand = new Random();
 
         int move = int.Parse(available[rand.Next(available.Length)].ToString());
-        
+
         Console.WriteLine($"{computerName} 🤖 puts a '{symbol}' on {move}");
         board.MakeMove(move, symbol);
         Thread.Sleep(1000);
